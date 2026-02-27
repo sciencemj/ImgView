@@ -8,6 +8,15 @@
 </div>
 
 ---
+
+<details align="center">
+<summary>Test Output</summary>
+
+<img src="images/png-test-image.png" alt="Original" width="400" height="250">
+<img src="images/test-output.png" alt="Output" width="400" height="250">
+
+</details>
+
 ## Required
 uv is required!
 ## Install
