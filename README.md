@@ -12,8 +12,8 @@
 <details align="center">
 <summary>Test Output</summary>
 
-<img src="images/png-test-image.png" alt="Original" width="400" height="250">
-<img src="images/test-output.png" alt="Output" width="400" height="250">
+<img src="images/glass_stone.png" alt="Original" width="400" height="400">
+<img src="images/glass_stone_output.png" alt="Output" width="400" height="400">
 
 </details>
 
