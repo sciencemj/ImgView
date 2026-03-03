@@ -10,10 +10,10 @@ def read(path: str):
 
     data = ""
     for i, page in enumerate(reader.pages):
-        data += "-" * (width) + "\n"
+        data += "=" * (width) + "\n"
         data += centerize(f"||Page {i + 1}||")
         data += page.extract_text() + "\n"
-        data += "-" * (width) + "\n"
+        data += "=" * (width) + "\n\n"
     pydoc.pager(data)
 
 
