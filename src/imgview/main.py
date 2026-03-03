@@ -1,13 +1,16 @@
 import argparse
 import shutil
+from pathlib import Path
 
 from PIL import Image
 from PIL.ImageFile import ImageFile
 from rich.console import Console
 from rich.style import Style
 
+import imgview.read_pdf as read_pdf
 
-def get_resized_image(image: ImageFile, custom_width=None) -> ImageFile:
+
+def get_resized_image(image: ImageFile, custom_width=None):
     size = shutil.get_terminal_size(fallback=(80, 24))
     width = size.columns if not custom_width else custom_width
     height = size.lines
@@ -23,7 +26,12 @@ def get_resized_image(image: ImageFile, custom_width=None) -> ImageFile:
 
 def printImage(file: str, cutom_width=None):
     try:
-        image = Image.open(file)
+        path = Path(file)
+        if path.suffix != ".pdf":
+            image = Image.open(file)
+        else:
+            read_pdf.read(file)
+            return
     except Image.UnidentifiedImageError as e:
         print(f"Error trying to open {file}: {e}")
     except FileNotFoundError as e:
@@ -31,7 +39,7 @@ def printImage(file: str, cutom_width=None):
     else:
         resized_image = get_resized_image(image, custom_width=cutom_width)
         width, height = resized_image.size
-        pixels = list(resized_image.get_flattened_data())
+        pixels: list = list(resized_image.get_flattened_data())
         console = Console()
         for h in range(height):
             for w in range(width):
