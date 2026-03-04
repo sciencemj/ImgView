@@ -17,6 +17,15 @@ def read(path: str):
     pydoc.pager(data)
 
 
+def read_pdf_image(path: str):
+    reader = PdfReader(path)
+
+    images = []
+    for page in reader.pages:
+        images.extend(map(lambda x: x[1].image, page.images.items()))
+    return images
+
+
 def centerize(txt: str) -> str:
     width, _ = shutil.get_terminal_size()
     space = " " * ((width - len(txt)) // 2)
