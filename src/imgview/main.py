@@ -82,21 +82,24 @@ def main():
     parser = argparse.ArgumentParser(description="View image in treminal!")
     parser.add_argument(
         "--width",
+        "-w",
         type=int,
         default=None,
         help="manually set the width of image output.",
     )
     parser.add_argument(
         "--pdf_img",
+        "-p",
         default=False,
         action="store_true",
         help="print every image in pdf.",
     )
     parser.add_argument(
         "--raw",
+        "-r",
         default=False,
         action="store_true",
-        help="not view image in less.",
+        help="print image directly in terminal.",
     )
     parser.add_argument("files", type=str, nargs="*")
     args = parser.parse_args()
